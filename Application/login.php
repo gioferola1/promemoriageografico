@@ -9,13 +9,15 @@ $conn = new mysqli($host, $dbUser, $dbPwd, $dbName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$sql = "show tables";
-$result = $conn->query($sql);
-$tabelle = new array();
+$table = array();
+$sql = "SELECT *
+		FROM persone";
+	$result = $conn->query($sql);
 
-if($result->num_rows > 0){
-    while ($tabella = $result->fetch_assoc()){
-        $tabelle[] = $tabella;
-} 
-print json_encode($tabelle);
+	if($result->num_rows > 0){
+		while ($row = $result->fetch_assoc()){
+    	    $table[] = $row;
+	    }
+	}
+print json_encode($table);
 ?>
