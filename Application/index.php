@@ -6,6 +6,7 @@
 	<title>Promemoria geografico</title>
 	<link href="css/site.css" rel="stylesheet">
 </head>
+<?php echo "ciao";?>
 
 <body>
 <div class="main-container">
