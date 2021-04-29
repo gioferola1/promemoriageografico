@@ -7,7 +7,7 @@ $dbPwd="fufnusufre.90";
 $dbName="promemoria";
 $conn=mysqli_init(); 
 mysqli_ssl_set($conn, NULL, NULL, "/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
- mysqli_real_connect($con, "datipomemoria.mysql.database.azure.com", "gioferola@datipomemoria", "fufnusudre.90", "promemoria", 3306);
+ mysqli_real_connect($conn, "datipomemoria.mysql.database.azure.com", "gioferola@datipomemoria", "fufnusudre.90", "promemoria", 3306);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
