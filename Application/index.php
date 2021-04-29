@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>PHP Application</title>
+	<title>Promemoria geografico</title>
 	<link href="css/site.css" rel="stylesheet">
 </head>
 
