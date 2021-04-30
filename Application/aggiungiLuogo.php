@@ -21,7 +21,7 @@ if(!isset($_REQUEST['nome'],$_REQUEST['descrizione'], $_REQUEST['email'], $_REQU
 //****************************************
 
 /*
-  * controllo che l'email non sia presente
+  * controllo che l'email sia presente
   */
 if($stmt = $conn->prepare('SELECT * FROM persone WHERE email = ?')){
     $stmt->bind_param('s', $_REQUEST['email']);
@@ -39,7 +39,7 @@ if($stmt = $conn->prepare('SELECT * FROM persone WHERE email = ?')){
 *salvo l'utente
 */
 
-if($stmt = $conn->prepare('INSERT INTO luoghi (nome, descrizione, email, latitudine, longitudine) VALUES (?, ?, ?, ?, ?)')){
+if($stmt = $conn->prepare('INSERT INTO luoghi (nome, descrizione, emailPersona, latitudine, longitudine) VALUES (?, ?, ?, ?, ?)')){
     $stmt->bind_param('sssdd', $_REQUEST['nome'], $_REQUEST['descrizione'], $_REQUEST['email'], $_REQUEST['latitudine'], $_REQUEST['longitudine']);
     $stmt->execute();
     $stmt->close();
