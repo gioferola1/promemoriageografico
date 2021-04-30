@@ -12,10 +12,39 @@ if (mysqli_connect_errno($conn))
 {
     die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
-printf("Reading data from table: \n");
-$res = mysqli_query($conn, 'SELECT * FROM persone');
-while ($row = mysqli_fetch_assoc($res))
- {
-    var_dump($row);
- }
+/*
+* controllo che i parametri esistano
+*/
+if(!isset($_REQUEST['email'], $_REQUEST['password'])){
+    exit('inserire email e password');
+}
+//****************************************
+
+/*
+* controllo login
+*/
+//recupero i dati di quell'utente se esiste
+if($stmt = $con->prepare('SELECT id, password FROM persone WHERE email = ?')){
+$stmt->bind_param('s', $_REQUEST['email']);
+$stmt->execute();
+//salvo il risultato
+$stmt->store_result();
+if($stmt->num_rows > 0){
+$stmt->bind_result($id,$password);
+$stmt->fetch();
+//l'account esiste, adesso controllo se le password coincidono
+if(password_verify($_REQUEST['password'], $password)){
+//le password coincidono
+echo "accesso effettuato";
+} else {
+//le password non coincidono
+echo "username o password errati!";
+}
+} else {
+//username errato
+echo "username o password errati!";
+}
+$stmt->close();
+}
+
 ?>
