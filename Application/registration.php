@@ -12,15 +12,9 @@ if (mysqli_connect_errno($conn))
 {
     die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
-/*
-* controllo che i parametri esistano
-*/
-if(!isset($_REQUEST['email'], $_REQUEST['password'])){
-    exit('inserire email e password');
-}
-//****************************************
 
-//*
+
+/*
 * controllo che i parametri esistano
 */
 if(!isset($_REQUEST['nome'],$_REQUEST['cognome'], $_REQUEST['email'], $_REQUEST['password'])){
