@@ -27,7 +27,7 @@ if($stmt = $conn->prepare('SELECT password FROM persone WHERE email = ?')){
     //salvo il risultato
     $stmt->store_result();
     if($stmt->num_rows > 0){
-        $stmt->bind_result($id,$password);
+        $stmt->bind_result($password);
         $stmt->fetch();
         //l'account esiste, adesso controllo se le password coincidono
         if(password_verify($_REQUEST['password'], $password)){
