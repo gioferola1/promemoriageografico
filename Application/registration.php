@@ -32,7 +32,7 @@ if(!isset($_REQUEST['nome'],$_REQUEST['cognome'], $_REQUEST['email'], $_REQUEST[
 /*
   * controllo che l'email non sia già usata
   */
-if($stmt = $con->prepare('SELECT * FROM persone WHERE email = ?')){
+if($stmt = $conn->prepare('SELECT * FROM persone WHERE email = ?')){
   $stmt->bind_param('s', $_REQUEST['email']);
   $stmt->execute();
   //salvo il risultato
@@ -48,7 +48,7 @@ if($stmt = $con->prepare('SELECT * FROM persone WHERE email = ?')){
 *salvo l'utente
 */
 
-if($stmt = $con->prepare('INSERT INTO persone (nome, cognome, password, email) VALUES (?, ?, ?, ?)')){
+if($stmt = $conn->prepare('INSERT INTO persone (nome, cognome, password, email) VALUES (?, ?, ?, ?)')){
   $password = password_hash($_REQUEST['password'],PASSWORD_BCRYPT);
   $stmt->bind_param('ssss', $_REQUEST['nome'], $_REQUEST['cognome'],$password, $_REQUEST['email']);
   $stmt->execute();
