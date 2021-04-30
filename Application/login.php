@@ -32,7 +32,7 @@ if($stmt = $conn->prepare('SELECT password FROM persone WHERE email = ?')){
         //l'account esiste, adesso controllo se le password coincidono
         if(password_verify($_REQUEST['password'], $password)){
             //le password coincidono
-            echo "accesso effettuato";
+            accedi();
         } else {
             //le password non coincidono
             echo "username o password errati!";
