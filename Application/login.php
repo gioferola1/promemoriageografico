@@ -54,7 +54,7 @@ function accedi($conn){
             $luoghi[] = $luogo;
         }
     }
-    var_dump($luoghi);
+    print json_encode($luoghi);
 }
 
 
