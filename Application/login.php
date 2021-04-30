@@ -1,6 +1,4 @@
 <?php
-//$email = $_POST['email'];
-//$password = $_POST['password'];
 $host="datipomemoria.mysql.database.azure.com";
 $dbUser="gioferola@datipomemoria";
 $dbPwd="fufnusufre.90";
@@ -24,7 +22,7 @@ if(!isset($_REQUEST['email'], $_REQUEST['password'])){
 * controllo login
 */
 //recupero i dati di quell'utente se esiste
-if($stmt = $con->prepare('SELECT id, password FROM persone WHERE email = ?')){
+if($stmt = $conn->prepare('SELECT id, password FROM persone WHERE email = ?')){
 $stmt->bind_param('s', $_REQUEST['email']);
 $stmt->execute();
 //salvo il risultato
