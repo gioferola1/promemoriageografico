@@ -38,7 +38,7 @@ $stmt->close();
 
 $luoghi = array();
 if($stmt = $conn->prepare('DELETE FROM luoghi WHERE emailPersona = ? AND nome = ?')){
-    $stmt->bind_param('s', $_REQUEST['email']);
+    $stmt->bind_param('ss', $_REQUEST['email'], $_REQUEST['nome']);
     $stmt->execute();
     echo "luogo eliminato";
 }
