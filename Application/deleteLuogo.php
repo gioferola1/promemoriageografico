@@ -12,7 +12,7 @@ if (mysqli_connect_errno($conn)) {
 /*
 * controllo che il parametro esista
 */
-if(!isset($_REQUEST['email']) || !isset($_REQUEST['nome'])){
+if(!isset($_REQUEST['email']) || !isset($_REQUEST['id'])){
     exit('inserire email e nome');
 }
 //****************************************
@@ -38,7 +38,7 @@ $stmt->close();
 
 $luoghi = array();
 if($stmt = $conn->prepare('DELETE FROM luoghi WHERE emailPersona = ? AND nome = ?')){
-    $stmt->bind_param('ss', $_REQUEST['email'], $_REQUEST['nome']);
+    $stmt->bind_param('si', $_REQUEST['email'], $_REQUEST['id']);
     $stmt->execute();
     echo "luogo eliminato";
 }
